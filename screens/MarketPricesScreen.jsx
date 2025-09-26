@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, TextInput } from 'react-native';
+import { useTranslation } from 'react-i18next';
 import { colors, spacing, typography, shadows } from '../theme';
 
 export default function MarketPricesScreen({ navigation }) {
+  const { t } = useTranslation();
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedFilter, setSelectedFilter] = useState('all');
 
@@ -29,15 +31,15 @@ export default function MarketPricesScreen({ navigation }) {
   return (
     <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
       <View style={styles.header}>
-        <Text style={styles.title}>Market Prices</Text>
-        <Text style={styles.subtitle}>Real-time poultry market data</Text>
+        <Text style={styles.title}>{t('market.title')}</Text>
+        <Text style={styles.subtitle}>{t('market.subtitle')}</Text>
       </View>
 
       {/* Search and Filter */}
       <View style={styles.searchContainer}>
         <TextInput
           style={styles.searchInput}
-          placeholder="Search products or locations..."
+          placeholder={t('market.search_placeholder')}
           value={searchQuery}
           onChangeText={setSearchQuery}
           placeholderTextColor={colors.textMuted}
@@ -66,10 +68,10 @@ export default function MarketPricesScreen({ navigation }) {
 
       {/* Price Alerts */}
       <View style={styles.alertCard}>
-        <Text style={styles.alertTitle}>Price Alerts</Text>
-        <Text style={styles.alertText}>Get notified when prices change significantly</Text>
+        <Text style={styles.alertTitle}>{t('market.price_alerts')}</Text>
+        <Text style={styles.alertText}>{t('market.get_notified')}</Text>
         <TouchableOpacity style={styles.alertButton}>
-          <Text style={styles.alertButtonText}>Set Alert</Text>
+          <Text style={styles.alertButtonText}>{t('market.set_alert')}</Text>
         </TouchableOpacity>
       </View>
 
@@ -92,7 +94,7 @@ export default function MarketPricesScreen({ navigation }) {
                 ]}>
                   {item.change}
                 </Text>
-                <Text style={styles.changeLabel}>vs yesterday</Text>
+                <Text style={styles.changeLabel}>{t('dashboard.vs_yesterday')}</Text>
               </View>
             </View>
           </View>
@@ -101,17 +103,17 @@ export default function MarketPricesScreen({ navigation }) {
 
       {/* Market Trends */}
       <View style={styles.trendsCard}>
-        <Text style={styles.trendsTitle}>Market Trends</Text>
+        <Text style={styles.trendsTitle}>{t('market.market_trends')}</Text>
         <View style={styles.trendItem}>
-          <Text style={styles.trendLabel}>7-day average</Text>
+          <Text style={styles.trendLabel}>{t('market.seven_day_avg')}</Text>
           <Text style={styles.trendValue}>+2.3%</Text>
         </View>
         <View style={styles.trendItem}>
-          <Text style={styles.trendLabel}>30-day average</Text>
+          <Text style={styles.trendLabel}>{t('market.thirty_day_avg')}</Text>
           <Text style={styles.trendValue}>+4.1%</Text>
         </View>
         <TouchableOpacity style={styles.viewChartButton}>
-          <Text style={styles.viewChartText}>View Detailed Chart →</Text>
+          <Text style={styles.viewChartText}>{t('market.view_chart')}</Text>
         </TouchableOpacity>
       </View>
     </ScrollView>

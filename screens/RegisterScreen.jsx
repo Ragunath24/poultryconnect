@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
+import { useTranslation } from 'react-i18next';
 import { colors, spacing, radii, typography } from '../theme';
 import Logo from '../components/Logo';
 
 export default function RegisterScreen({ navigation }) {
+  const { t } = useTranslation();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -17,17 +19,17 @@ export default function RegisterScreen({ navigation }) {
       <Logo size={112} />
       <Text style={styles.appTitle}>Poultry{"\n"}Connect</Text>
 
-      <TextInput placeholder="Full Name" value={name} onChangeText={setName} style={styles.input} />
-      <TextInput placeholder="Mobile Number" value={email} onChangeText={setEmail} style={styles.input} keyboardType="phone-pad" />
-      <TextInput placeholder="Password" value={password} onChangeText={setPassword} style={styles.input} secureTextEntry />
-      <TextInput placeholder="Confirm Password" value={password} onChangeText={setPassword} style={styles.input} secureTextEntry />
+      <TextInput placeholder={t('auth.fullName')} value={name} onChangeText={setName} style={styles.input} />
+      <TextInput placeholder={t('auth.mobileNumber')} value={email} onChangeText={setEmail} style={styles.input} keyboardType="phone-pad" />
+      <TextInput placeholder={t('auth.password')} value={password} onChangeText={setPassword} style={styles.input} secureTextEntry />
+      <TextInput placeholder={t('auth.confirmPassword')} value={password} onChangeText={setPassword} style={styles.input} secureTextEntry />
 
       <TouchableOpacity style={styles.button} onPress={onRegister} activeOpacity={0.9}>
-        <Text style={styles.buttonText}>Sign Up</Text>
+        <Text style={styles.buttonText}>{t('auth.signUp')}</Text>
       </TouchableOpacity>
 
       <TouchableOpacity onPress={() => navigation.goBack()}>
-        <Text style={styles.link}>Already have an account? Log in</Text>
+        <Text style={styles.link}>{t('auth.alreadyHaveAccount')}</Text>
       </TouchableOpacity>
     </View>
   );

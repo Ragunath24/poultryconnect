@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { useTranslation } from 'react-i18next';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import DashboardScreen from '../screens/DashboardScreen';
@@ -19,6 +20,8 @@ const TabIcon = ({ name, color, size, label }) => (
 );
 
 export default function BottomTabNavigator() {
+  const { t } = useTranslation();
+  
   return (
     <Tab.Navigator
       screenOptions={{
@@ -34,7 +37,7 @@ export default function BottomTabNavigator() {
         component={DashboardScreen}
         options={{
           tabBarIcon: ({ color, size }) => (
-            <TabIcon name="dashboard" color={color} size={size} label="Dashboard" />
+            <TabIcon name="dashboard" color={color} size={size} label={t('nav.knowledge') ? t('nav.knowledge') && t('navigation.dashboard') : t('navigation.dashboard')} />
           ),
         }}
       />
@@ -43,7 +46,7 @@ export default function BottomTabNavigator() {
         component={PoultryManagementScreen}
         options={{
           tabBarIcon: ({ color, size }) => (
-            <TabIcon name="pets" color={color} size={size} label="Poultry" />
+            <TabIcon name="pets" color={color} size={size} label={t('nav.manage_poultry') || t('navigation.poultry')} />
           ),
         }}
       />
@@ -52,7 +55,7 @@ export default function BottomTabNavigator() {
         component={ConnectScreen}
         options={{
           tabBarIcon: ({ color, size }) => (
-            <TabIcon name="people" color={color} size={size} label="Connect" />
+            <TabIcon name="people" color={color} size={size} label={t('nav.connect') || t('navigation.connect')} />
           ),
         }}
       />
@@ -61,7 +64,7 @@ export default function BottomTabNavigator() {
         component={ReportsScreen}
         options={{
           tabBarIcon: ({ color, size }) => (
-            <TabIcon name="assessment" color={color} size={size} label="Reports" />
+            <TabIcon name="assessment" color={color} size={size} label={t('nav.reports') || t('navigation.reports')} />
           ),
         }}
       />
@@ -70,7 +73,7 @@ export default function BottomTabNavigator() {
         component={ProfileScreen}
         options={{
           tabBarIcon: ({ color, size }) => (
-            <TabIcon name="person" color={color} size={size} label="Profile" />
+            <TabIcon name="person" color={color} size={size} label={t('nav.profile') || t('navigation.profile')} />
           ),
         }}
       />

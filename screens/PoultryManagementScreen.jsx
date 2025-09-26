@@ -1,11 +1,13 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import { useTranslation } from 'react-i18next';
 
 export default function PoultryManagementScreen() {
+  const { t } = useTranslation();
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Poultry Management</Text>
-      <Text>Manage your flocks, feed, and schedules.</Text>
+      <Text style={styles.title}>{t('poultry.title')}</Text>
+      <Text>{t('poultry.subtitle')}</Text>
     </View>
   );
 }

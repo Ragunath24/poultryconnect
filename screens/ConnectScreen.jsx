@@ -53,7 +53,7 @@ export default function ConnectScreen({ navigation }) {
     }
   ];
 
-  const filters = ['all', 'broiler', 'layer', 'mixed', 'organic'];
+  const filters = ['all', 'broiler', 'layer', 'Breeder', 'organic'];
 
   const filteredFarmers = farmers.filter(farmer => {
     const matchesSearch = farmer.name.toLowerCase().includes(searchQuery.toLowerCase()) ||

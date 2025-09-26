@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
+import { useTranslation } from 'react-i18next';
 import { colors, spacing, radii, typography } from '../theme';
 import Logo from '../components/Logo';
 
 export default function LoginScreen({ navigation }) {
+  const { t } = useTranslation();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -17,7 +19,7 @@ export default function LoginScreen({ navigation }) {
       <Text style={styles.appTitle}>Poultry{"\n"}Connect</Text>
 
       <TextInput
-        placeholder="Mobile Number"
+        placeholder={t('auth.mobileNumber')}
         value={email}
         onChangeText={setEmail}
         style={styles.input}
@@ -25,7 +27,7 @@ export default function LoginScreen({ navigation }) {
       />
       <View style={styles.passwordRow}>
         <TextInput
-          placeholder="Password"
+          placeholder={t('auth.password')}
           value={password}
           onChangeText={setPassword}
           style={[styles.input, { flex: 1, marginBottom: 0 }]}
@@ -34,15 +36,15 @@ export default function LoginScreen({ navigation }) {
       </View>
 
       <TouchableOpacity style={styles.button} onPress={onLogin} activeOpacity={0.9}>
-        <Text style={styles.buttonText}>Login</Text>
+        <Text style={styles.buttonText}>{t('auth.login')}</Text>
       </TouchableOpacity>
 
       <TouchableOpacity onPress={() => {}}>
-        <Text style={styles.forgot}>Forgot password?</Text>
+        <Text style={styles.forgot}>{t('auth.forgotPassword')}</Text>
       </TouchableOpacity>
 
       <TouchableOpacity onPress={() => navigation.navigate('Register')}>
-        <Text style={styles.link}>Create an account</Text>
+        <Text style={styles.link}>{t('auth.createAccount')}</Text>
       </TouchableOpacity>
     </View>
   );
